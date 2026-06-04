@@ -1,0 +1,153 @@
+openapi: 3.1.0
+info:
+  title: Team Skills Matrix API
+  version: 0.1.0
+servers:
+  - url: http://localhost:8080
+paths:
+  /api/skills:
+    get:
+      summary: List skills
+      operationId: listSkills
+      responses:
+        '200':
+          description: Skills listed in case-insensitive ascending order
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Skill'
+    post:
+      summary: Create a skill
+      operationId: createSkill
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillInput'
+      responses:
+        '201':
+          description: Skill created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                invalidName:
+                  value:
+                    code: VALIDATION_ERROR
+                    message: Skill name must be 1-80 characters after normalization.
+        '409':
+          description: Duplicate skill name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                duplicateSkill:
+                  value:
+                    code: SKILL_NAME_DUPLICATE
+                    message: A skill with this name already exists.
+  /api/skills/{id}:
+    patch:
+      summary: Rename a skill
+      operationId: renameSkill
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SkillInput'
+      responses:
+        '200':
+          description: Skill renamed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Skill'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '409':
+          description: Duplicate skill name
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      summary: Delete a skill
+      operationId: deleteSkill
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+            minimum: 1
+      responses:
+        '204':
+          description: Skill deleted
+        '400':
+          description: Invalid id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Skill not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    Skill:
+      type: object
+      required: [id, name]
+      properties:
+        id:
+          type: integer
+          minimum: 1
+        name:
+          type: string
+          minLength: 1
+          maxLength: 80
+    SkillInput:
+      type: object
+      required: [name]
+      properties:
+        name:
+          type: string
+          description: Full Unicode skill name, normalized by trimming and collapsing internal spaces.
+    ErrorResponse:
+      type: object
+      required: [code, message]
+      properties:
+        code:
+          type: string
+        message:
+          type: string

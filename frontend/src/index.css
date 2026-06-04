@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+:root {
+  --color-primary: #ffd028;
+  --color-primary-hover: #e6bc1f;
+  --color-text-strong: #1c1f24;
+  --color-background: #f5f7fa;
+  --color-surface: #ffffff;
+  --color-border: #d8dde6;
+  --color-text-muted: #5a6475;
+  --color-error: #c62828;
+  --color-focus: #2f80ed;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text-strong);
+  background:
+    radial-gradient(circle at 80% -20%, #ffe994 0%, rgba(255, 233, 148, 0) 45%),
+    linear-gradient(160deg, #f5f7fa 0%, #ebeff5 100%);
+}
+
+.catalog-page {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 2rem 1rem 3rem;
+}
+
+.hero {
+  margin-bottom: 1.5rem;
+}
+
+.eyebrow {
+  color: var(--color-text-muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+h1 {
+  margin: 0.25rem 0 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.9rem, 2.6vw, 2.6rem);
+}
+
+.skill-form,
+.rename-form,
+.skill-list {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+}
+
+.skill-form {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  gap: 0.6rem;
+}
+
+label {
+  font-weight: 600;
+}
+
+input {
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+}
+
+input:focus {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+}
+
+.invalid {
+  border-color: var(--color-error);
+}
+
+button {
+  border: none;
+  background: var(--color-primary);
+  color: var(--color-text-strong);
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 0.65rem 0.95rem;
+  cursor: pointer;
+}
+
+button:hover:enabled {
+  background: var(--color-primary-hover);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.error-text {
+  color: var(--color-error);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.skill-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skill-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.skill-item:last-child {
+  border-bottom: none;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.rename-form {
+  width: 100%;
+  padding: 0.7rem;
+  display: grid;
+  gap: 0.5rem;
+}
+
+@media (max-width: 640px) {
+  .skill-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
