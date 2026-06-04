@@ -1,0 +1,49 @@
+lockfile_version: '1'
+generated_at: '2026-06-04T10:56:59.415418+00:00'
+apm_version: 0.17.0
+dependencies:
+- repo_url: anthropics/skills
+  host: github.com
+  resolved_commit: da20c92503b2e8ff1cf28ca81a0df4673debdbf7
+  virtual_path: skills/skill-creator
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/skill-creator
+  content_hash: sha256:b2bfe91d69ca99994c0566baede889e7d2b9bb8791c6b6106c5d387392f717f6
+- repo_url: github/awesome-copilot
+  host: github.com
+  resolved_commit: 776d84143238cb91f7242665f188887b9e8d2aa9
+  virtual_path: skills/conventional-commit
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/conventional-commit
+  content_hash: sha256:f29c9486cede6c7b2df0cfb0a2e4aa67446552b991bcf17d1b309e903171f03d
+- repo_url: mattpocock/skills
+  host: github.com
+  resolved_commit: aaf2453fbdfe7a15c07f11d861224f34ab4b53cb
+  virtual_path: skills/engineering/grill-with-docs
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/grill-with-docs
+  content_hash: sha256:eb0e91e84277283dc2b23ed544399e53afd6b5287e5b6929f25fe8aa608e164b
+- repo_url: mattpocock/skills
+  host: github.com
+  resolved_commit: aaf2453fbdfe7a15c07f11d861224f34ab4b53cb
+  virtual_path: skills/engineering/to-prd
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/to-prd
+  content_hash: sha256:a6d6d475f1d01c201937fa0c306e55b7056b02023ad615bc92f57514e831dd31
+- repo_url: mattpocock/skills
+  host: github.com
+  resolved_commit: aaf2453fbdfe7a15c07f11d861224f34ab4b53cb
+  virtual_path: skills/engineering/tdd
+  is_virtual: true
+  package_type: claude_skill
+  deployed_files:
+  - .agents/skills/tdd
+  content_hash: sha256:e63cb1d7d5f6d90ad03f811299d40cc8e52c3d4bdaafd058ce2585ca249c234c
